@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
+
+:root {
+  --background: #000;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 400;
+}
+
+.wrapper{
+  margin: 0 auto;
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+.remove-style{
+  text-decoration: none;
+  color: #000;
+}
+
+
+/* navigation styles start here */
+
+header {
+  background: var(--background);
+  text-align: center;
+  position: fixed;
+  width: 100%;
+}
+
+/* changed this from the tutorial video to
+   allow it to gain focus, making it tabbable */
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle:focus ~ .nav-toggle-label {
+
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: white;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: '';
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+nav {
+ position: absolute;
+ text-align: left;
+ top: 100%;
+ left: 0;
+ background: var(--background);
+ width: 100%;
+ /* display: none; */
+ transform: scale(1, 0);
+ transform-origin: top;
+ transition: transform 400ms ease-in-out;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+.nav-toggle:checked ~ nav {
+  /* display: block; */
+  transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+/* landing */
+
+#landing{
+  /* background: url(../images/landing.jpg) no-repeat; */
+  background-image:url(../images/landing.jpg);
+  background-size:cover;
+  background-position:center;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:0 20px;
+}
+
+#landing h1{
+  position: absolute;
+  top: 60vh;
+  font-size: 6rem;
+  color: #00122d;
+  font-weight: 800;
+  box-shadow: 10px 12px 39px -8px rgba(0,0,0,0.75);
+}
+
+
+/* popular product */
+
+.popular-product{
+  text-align: center;
+  padding-top: 7rem;
+  padding-bottom: 7em;
+}
+
+.popular-product h1{
+  font-size: 2em;
+  font-weight: 800;
+  margin-bottom: 2.6rem;
+}
+
+.popular-product p{
+  font-size: 1.6rem;
+  line-height: 3rem;
+  padding: 0 3em;
+  margin-bottom: 5em;
+}
+
+.popular-product-box{
+  display: grid;
+  grid-template-columns: repeat(1fr);
+  grid-gap: 1em;
+}
+
+.popular-item img{
+  width: 100%;
+}
+
+/* disount */
+
+.discount{
+  position: relative;
+  text-align: center;
+}
+
+.discount img{
+  width: 100%;
+}
+
+.discount-text-box{
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+
+.discount-text-box a{
+  font-size: 1rem;
+  font-weight: 800;
+  padding: 10px 20px;;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #000;
+  background: #d9cfb0;
+  transition-property: background, border-radius;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    
+}
+
+.discount-text-box a:hover{
+  color: #fff;
+  background-color: #000;
+  transform: translateX(10px);
+
+}
+
+ /* newsletter */
+
+ .newsletter{
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 50px 0;
+}
+
+.newsletter-box{
+  text-align: center;
+}
+
+.newsletter-box h1{
+  font-size: 2.4rem;
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
+.newsletter-box h3{
+  margin-top: .5rem;
+  color: #554c4cbb;
+}
+
+
+.newsletter-form{
+  text-align: center;
+  width: 100%;
+  line-height: 100%;
+  padding-top: 2.5rem;;
+}
+
+.newsletter-form input{
+  text-align: center;
+  font-size: 21px;
+  padding-left: 50px;
+  border-radius: 5px;
+  padding: 10px;
+  width: 60%;
+}
+
+/* line */
+.line{
+  border-bottom: 1px solid #ccc;
+  margin: 3rem 0;
+}
+
+
+/* media query */
+
+@media screen and (min-width: 800px) {
+  
+  .nav-toggle-label{
+    display: none;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+  
+  .logo {
+    grid-column: 2 / 3;
+  }
+  
+  nav {
+    all: unset;
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  nav ul {
+    display: flex;
+  }
+  
+  nav li {
+    margin-left: 3em;
+    margin-bottom: 0;
+  }
+  
+  nav a {
+    opacity: 1;
+    position: relative;
+  }
+  
+  nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: black;
+    position: absolute;
+    top: -.75em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+  }
+  
+  nav a:hover::before {
+    transform: scale(1,1);
+  }
+
+  /* popular product */
+
+  .popular-product h1{
+    font-size: 2em;
+    font-weight: 800;
+    margin-bottom: 2.6rem;
+  }
+
+  .popular-product p{
+    font-size: 1.6rem;
+    line-height: 3rem;
+    padding: 0 3em;
+    margin-bottom: 5em;
+  }
+
+  .popular-product-box{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+  }
+
+  /* discount */
+
+
+  /* newsletter */
+
+  .newsletter{
+    position: relative;
+    display: grid;
+    grid-template-columns: 50% 50%;;
+    padding: 50px 0;
+  }
+  
+  .newsletter-box{
+
+  }
+
+  .newsletter-box h1{
+    font-size: 2.4rem;
+    margin-bottom: 0;
+    font-weight: 700;
+  }
+
+  .newsletter-box h3{
+    margin-top: .5rem;
+    color: #554c4cbb;
+  }
+
+
+  .newsletter-form{
+    text-align: center;
+    line-height: 100%;
+    padding-top: 2.5rem;;
+  }
+
+  .newsletter-form input{
+    font-size: 21px;
+    padding-left: 50px;
+    border-radius: 5px;
+    padding: 10px;
+    width: 60%;
+  }
+  
+  
+}
+
